@@ -1,21 +1,13 @@
-import React, {useReducer, useState} from "react";
+import React, {useContext} from "react";
+import { QuizContext } from "../contexts/QuizContexts";
 import Question from "./Question";
 
-const initialState = {
-  currentQuestionIndex: 0,
-  questions: []
-}
 
-const reducerFunc = (state, action) => {
- 
-  if(action.type === "NEXT_BUTTON"){
-    return{...state, currentQuestionIndex: state.currentQuestionIndex + 1}
-  }
-}
 
 function Quiz() {
-  const [state, dispatch] = useReducer(reducerFunc, initialState)
-  console.log('state', state);
+
+  const [quizState, dispatch] = useContext(QuizContext)
+  console.log('QuizState', quizState);
   
   
   return( 
