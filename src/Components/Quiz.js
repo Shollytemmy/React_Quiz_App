@@ -12,12 +12,23 @@ function Quiz() {
   
   return( 
     <div className="quiz">
-   <div>
-    <div className="score">Question 1/18</div>
+      {quizState.showResults && 
+      <div className="results">
+        <div className="congratulations">Congratulation</div>
+        <div className="results-info">
+          <div>You've completed the Quiz</div>
+          <div>You scored 4 out of {quizState.questions.length}</div>
+        </div>
+      </div>
+      }
+   { !quizState.showResults &&
+    <div>
+    <div className="score">Question {quizState.currentQuestionIndex + 1}/{quizState.questions.length}</div>
     <Question />
     <div className="next-button" onClick={() => dispatch({type: 'NEXT_BUTTON'})}>Next Question</div>
   
     </div> 
+    }
    
     </div>
     )

@@ -6,14 +6,22 @@ import questions from '../data'
 
 const initialState = {
   currentQuestionIndex: 0,
-  questions
+  questions,
+  showResults: false
 }
 
 const reducerFunc = (state, action) => {
  
   if(action.type === "NEXT_BUTTON"){
-    return{...state, currentQuestionIndex: state.currentQuestionIndex + 1}
+    const showResults = state.currentQuestionIndex === state.questions.length - 1
+    const currentQuestionIndex = showResults ? state.currentQuestionIndex : state.currentQuestionIndex + 1
+
+    return{...state, currentQuestionIndex,
+        showResults 
+    }
+    
   }
+  return {...state}
 }
 
 export const QuizContext = createContext()

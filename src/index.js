@@ -8,8 +8,7 @@ ReactDOM.render(
   <React.StrictMode>
     <QuizProvider>
     <Quiz />
-
-    </QuizProvider>
+ </QuizProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
