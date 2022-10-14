@@ -9,14 +9,18 @@ const initialState = {
   currentQuestionIndex: 0,
   questions,
   showResults: false,
-  answers: shuffleAnswers(questions[0])
+  answers: shuffleAnswers(questions[0]), 
+  currentAnswer: ''
 }
 
 const reducerFunc = (state, action) => {
   console.log(state, action);
- 
-  if(action.type === "NEXT_BUTTON"){
-    const showResults = state.currentQuestionIndex === state.questions.length - 1
+  switch(action.type){
+    case "SELECT_ANSWER":{
+      return {...state, currentAnswer: action.payload}
+    }
+    case "NEXT_BUTTON":{
+      const showResults = state.currentQuestionIndex === state.questions.length - 1
     const currentQuestionIndex = showResults ? state.currentQuestionIndex : state.currentQuestionIndex + 1
     const answers = showResults ? [] : shuffleAnswers(state.questions[currentQuestionIndex])
 
@@ -25,12 +29,19 @@ const reducerFunc = (state, action) => {
         showResults,
         answers
     }
-    
+
+    }
+
+    case "RESTART": {
+       return initialState
+
+    }
+    default:{
+      return state
+    }
   }
-  if(action.type === "RESTART"){
-    return initialState
-  }
-  return {...state}
+ 
+ 
 }
 
 export const QuizContext = createContext()
