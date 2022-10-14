@@ -3,15 +3,16 @@ import { QuizContext } from "../contexts/QuizContexts"
 import { Answer } from "./Answer"
 const Question = () => {
     const [quizState] = useContext(QuizContext)
-    const curIndex =quizState.questions[quizState.currentQuestionIndex]
+    const curQuestion =quizState.questions[quizState.currentQuestionIndex]
+    // console.log("curQuestion", curQuestion)
     return(
         <div>
-            <div className="question">{curIndex.question}</div>
+            <div className="question">{curQuestion.question}</div>
             <div className="answers">
-            <Answer />
-            <Answer />
-            <Answer />
-            <Answer />
+                {quizState.answers.map((answer) => (
+                    <Answer answerText = {answer} />
+                ))}
+       
 
             </div>
         </div>

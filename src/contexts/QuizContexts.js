@@ -1,5 +1,6 @@
 import { createContext, useReducer } from "react";
 import questions from '../data'
+import { shuffleAnswers } from "../helpers";
 
 
 
@@ -7,7 +8,8 @@ import questions from '../data'
 const initialState = {
   currentQuestionIndex: 0,
   questions,
-  showResults: false
+  showResults: false,
+  answers: shuffleAnswers(questions[0])
 }
 
 const reducerFunc = (state, action) => {
@@ -15,11 +17,17 @@ const reducerFunc = (state, action) => {
   if(action.type === "NEXT_BUTTON"){
     const showResults = state.currentQuestionIndex === state.questions.length - 1
     const currentQuestionIndex = showResults ? state.currentQuestionIndex : state.currentQuestionIndex + 1
+    const answers = showResults ? [] : shuffleAnswers(state.questions[currentQuestionIndex])
 
-    return{...state, currentQuestionIndex,
-        showResults 
+    return{...state, 
+      currentQuestionIndex,
+        showResults,
+        answers
     }
     
+  }
+  if(action.type === "RESTART"){
+    return initialState
   }
   return {...state}
 }
