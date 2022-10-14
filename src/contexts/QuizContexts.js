@@ -13,6 +13,7 @@ const initialState = {
 }
 
 const reducerFunc = (state, action) => {
+  console.log(state, action);
  
   if(action.type === "NEXT_BUTTON"){
     const showResults = state.currentQuestionIndex === state.questions.length - 1
