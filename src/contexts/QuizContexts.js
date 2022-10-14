@@ -1,13 +1,12 @@
 import { createContext, useReducer } from "react";
-import questions from '../data'
 import { shuffleAnswers } from "../helpers";
 
 
 const initialState = {
   currentQuestionIndex: 0,
-  questions,
+  questions: [],
   showResults: false,
-  answers: shuffleAnswers(questions[0]), 
+  answers: [], 
   currentAnswer: '',
   correctAnswersCount: 0
 }
