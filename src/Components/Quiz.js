@@ -7,7 +7,7 @@ import Question from "./Question";
 function Quiz() {
 
   const [quizState, dispatch] = useContext(QuizContext)
-  console.log('QuizState', quizState);
+
   
   
   return( 

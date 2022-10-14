@@ -3,8 +3,6 @@ import questions from '../data'
 import { shuffleAnswers } from "../helpers";
 
 
-
-
 const initialState = {
   currentQuestionIndex: 0,
   questions,
@@ -15,7 +13,7 @@ const initialState = {
 }
 
 const reducerFunc = (state, action) => {
-  console.log(state, action);
+ 
   switch(action.type){
     case "SELECT_ANSWER":{
       const correctAnswersCount = action.payload === state.questions[state.currentQuestionIndex].correctAnswer ? state.correctAnswersCount + 1 :state.correctAnswersCount

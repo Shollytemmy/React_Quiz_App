@@ -4,7 +4,7 @@ import { Answer } from "./Answer"
 const Question = () => {
     const [quizState, dispatch] = useContext(QuizContext)
     const curQuestion =quizState.questions[quizState.currentQuestionIndex]
-    // console.log("curQuestion", curQuestion)
+   
      
     
     return(
