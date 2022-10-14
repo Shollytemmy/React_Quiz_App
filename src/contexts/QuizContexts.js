@@ -10,14 +10,16 @@ const initialState = {
   questions,
   showResults: false,
   answers: shuffleAnswers(questions[0]), 
-  currentAnswer: ''
+  currentAnswer: '',
+  correctAnswersCount: 0
 }
 
 const reducerFunc = (state, action) => {
   console.log(state, action);
   switch(action.type){
     case "SELECT_ANSWER":{
-      return {...state, currentAnswer: action.payload}
+      const correctAnswersCount = action.payload === state.questions[state.currentQuestionIndex].correctAnswer ? state.correctAnswersCount + 1 :state.correctAnswersCount
+      return {...state, currentAnswer: action.payload, correctAnswersCount}
     }
     case "NEXT_BUTTON":{
       const showResults = state.currentQuestionIndex === state.questions.length - 1
@@ -27,7 +29,8 @@ const reducerFunc = (state, action) => {
     return{...state, 
       currentQuestionIndex,
         showResults,
-        answers
+        answers,
+        currentAnswer: "",
     }
 
     }

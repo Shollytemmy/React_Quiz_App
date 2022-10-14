@@ -18,6 +18,8 @@ const Question = () => {
                     answerText = {answer}
                      key={index}
                      index = {index}
+                     currentAnswer = {quizState.currentAnswer}
+                     correctAnswer = {curQuestion.correctAnswer}
                       onSelect = {(answerText) => dispatch({type: "SELECT_ANSWER", payload: answerText})}
                        />
                 ))}

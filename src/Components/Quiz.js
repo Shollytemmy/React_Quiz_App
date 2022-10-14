@@ -17,7 +17,7 @@ function Quiz() {
         <div className="congratulations">Congratulation</div>
         <div className="results-info">
           <div>You've completed the Quiz</div>
-          <div>You scored 4 out of {quizState.questions.length}</div>
+          <div>You scored {quizState.correctAnswersCount} out of {quizState.questions.length}</div>
         </div>
         <div className="next-button" onClick={() => dispatch({type: "RESTART"})}>ReStart</div>
       </div>
